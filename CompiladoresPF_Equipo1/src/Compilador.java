@@ -59,7 +59,7 @@ public class Compilador extends javax.swing.JFrame {
         title = "Compilador - 180752";
         setLocationRelativeTo(null);
         setTitle(title);
-        directorio = new Directory(this, jtpCode, title, ".robo");
+        directorio = new Directory(this, jtpCode, title, ".mga");
         addWindowListener(new WindowAdapter() {// Cuando presiona la "X" de la esquina superior derecha
             @Override
             public void windowClosing(WindowEvent e) {
