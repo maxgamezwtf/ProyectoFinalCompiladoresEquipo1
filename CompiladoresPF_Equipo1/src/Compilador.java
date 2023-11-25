@@ -165,6 +165,7 @@ public class Compilador extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        jtpCode.setFont(new java.awt.Font("Menlo", 0, 13)); // NOI18N
         jScrollPane1.setViewportView(jtpCode);
 
         btnCompilar.setText("Compilar");
