@@ -3,7 +3,7 @@ import jflex.exceptions.SilentExit;
 
 /**
  *
- * @author yisus
+ * @author Maximiliano Gamez Alonso - 180752
  */
 public class ExecuteJFlex {
 

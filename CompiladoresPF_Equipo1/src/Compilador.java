@@ -28,7 +28,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author yisus
+ * @author Maximiliano Gamez Alonso - 180752
  */
 public class Compilador extends javax.swing.JFrame {
 
@@ -52,11 +52,11 @@ public class Compilador extends javax.swing.JFrame {
         for (int i = 0; i < 80 * 300; i++){
             System.out.println("\b");            
         }
-        System.out.println("Proyecto Final Compiladores \nMaximiliano Gamez Alonso - 180752");
+        System.out.println("Proyecto Final Compiladores \nMaximiliano Gamez Alonso - 180752\nLuis Angel Rodriguez Hurtado - 180563");
     }
 
     private void init() {
-        title = "Compilador - 180752";
+        title = "Compilador - Equipo1";
         setLocationRelativeTo(null);
         setTitle(title);
         directorio = new Directory(this, jtpCode, title, ".mga");
