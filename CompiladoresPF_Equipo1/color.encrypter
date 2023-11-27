@@ -1,6 +1,3 @@
-color $rojo --> #FF00F0;
-número $pasos --> 2;
-repetir(3){
-	pintar($rojo);
-	izquierda();
+(){
+	dsddsdsdsds
 }

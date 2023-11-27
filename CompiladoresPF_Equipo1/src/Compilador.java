@@ -25,7 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Element;
 /**
  *
  * @author yisus
@@ -85,6 +86,7 @@ public class Compilador extends javax.swing.JFrame {
             "tomar", "poner", "lanzarMoneda"}, jtpCode, () -> {
             timerKeyReleased.restart();
         });
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -109,6 +111,12 @@ public class Compilador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        rootPanel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                rootPanelKeyTyped(evt);
+            }
+        });
 
         btnAbrir.setText("Abrir");
         btnAbrir.addActionListener(new java.awt.event.ActionListener() {
@@ -166,6 +174,11 @@ public class Compilador extends javax.swing.JFrame {
         );
 
         jtpCode.setFont(new java.awt.Font("Menlo", 0, 13)); // NOI18N
+        jtpCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtpCodeKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtpCode);
 
         btnCompilar.setText("Compilar");
@@ -261,7 +274,7 @@ public class Compilador extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(rootPanel);
@@ -319,6 +332,28 @@ public class Compilador extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnEjecutarActionPerformed
+
+    private void rootPanelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rootPanelKeyTyped
+
+    }//GEN-LAST:event_rootPanelKeyTyped
+
+    private void jtpCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtpCodeKeyPressed
+        // TODO add your handling code here:
+        char pressedChar = evt.getKeyChar();
+        if (pressedChar == '(') {
+            jtpCode.replaceSelection(")");
+            int caretPosition = jtpCode.getCaretPosition();
+            jtpCode.setCaretPosition(caretPosition - 1); // Coloca el cursor entre los paréntesis
+        } else if (pressedChar == '[') {
+            jtpCode.replaceSelection("]");
+            int caretPosition = jtpCode.getCaretPosition();
+            jtpCode.setCaretPosition(caretPosition - 1); // Coloca el cursor entre las llaves/
+        } else if (pressedChar == '{') {
+            jtpCode.replaceSelection("}");
+            int caretPosition = jtpCode.getCaretPosition();
+            jtpCode.setCaretPosition(caretPosition - 1); // Coloca el cursor entre las llaves/
+        }
+    }//GEN-LAST:event_jtpCodeKeyPressed
 
     private void executeCode(ArrayList<String> blocksOfCode, int repeats) {
         for (int j = 1; j <= repeats; j++) {
@@ -378,7 +413,8 @@ public class Compilador extends javax.swing.JFrame {
         printConsole();
         codeHasBeenCompiled = true;
     }
-
+    
+    
     private void lexicalAnalysis() {
         // Extraer tokens
         Lexer lexer;
